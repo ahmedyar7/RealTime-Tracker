@@ -15,7 +15,13 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", (socket) => {
-  console.log("Connected");
+  socket.on("send-location", (data) => {
+    io.emit("received-location", { id: socket.id, ...data });
+  });
+
+  socket.on("disconnect", () => {
+    io.emit("user-disconnected", socket.id);
+  });
 });
 
 app.get("/", (req, res) => {

@@ -8,4 +8,36 @@ html,
 body {
   width: 100%;
   height: 100%;
+  font-family: "Roboto", sans-serif; /* Add a modern font */
+  background: #f0f2f5; /* Soft background */
+}
+
+#map {
+  width: 90%;
+  height: 90%;
+  margin: 20px auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+#branding {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
