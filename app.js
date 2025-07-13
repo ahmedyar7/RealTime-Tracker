@@ -3,16 +3,25 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const http = require("http");
+const path = require("path");
 const socketio = require("socket.io");
 
 const server = http.createServer(app);
-
 const io = socketio(server);
 
-app.get("/", (req, res) => {
-  res.send("Server is Running");
+// fix view engine typo
+app.set("view engine", "ejs");
+// serve static files correctly
+app.use(express.static(path.join(__dirname, "public")));
+
+io.on("connection", (socket) => {
+  console.log("Connected");
 });
 
-app.listen(process.env.PORT, (req, res) => {
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
+server.listen(process.env.PORT, () => {
   console.log(`✅ Server is Running on http://localhost:${process.env.PORT}`);
 });
